@@ -32,8 +32,10 @@ public class BoDController : MonoBehaviour
             }
             case State.move:
             {
-                    double dst = Vector2.Distance(transform.position, player.position);
-                    if(dst < 2)
+                    //поправить выход из анимации атаки
+                    anim.SetBool("isAtk", false);
+                    //double dst = Vector2.Distance(transform.position, player.position);
+                    if(DistanceToPlayer() < 2)
                     {
                         BoDState = State.atk;
                     }
@@ -59,8 +61,19 @@ public class BoDController : MonoBehaviour
                     break;
             }
             case State.dmg:
-            {
+            {//Получение урона
                     rb2d.velocity = Vector2.zero;
+                    break;
+            }
+            case State.atk:
+            {//Состояние атаки
+                    rb2d.velocity = Vector2.zero;
+                    anim.SetBool("isAtk", true);
+                    if(DistanceToPlayer() > 2)
+                    {
+                        BoDState = State.move;
+                        anim.SetBool("isAtk", false);
+                    }
                     break;
             }
         }
@@ -100,5 +113,9 @@ public class BoDController : MonoBehaviour
     public void ToMoveState()
     {
         BoDState = State.move;
+    }
+    double DistanceToPlayer()
+    {//Расстояние до игрока
+        return Vector2.Distance(transform.position, player.position);
     }
 }
