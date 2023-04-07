@@ -5,23 +5,18 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb2d;
-    [SerializeField]
-    float spd = 10f;
-    bool canJump = true;
     Animator anim;
     SpriteRenderer sprite;
+    GameObject UIController;
+    [SerializeField]GameObject panel;
+    bool canJump = true;
     bool isRight = true;
-    [SerializeField]
-    int HP = 100;
     bool canMove = true;
     float move;
-    [SerializeField]
-    LayerMask enemyMask;
-    [SerializeField]
-    Transform atkPoint;
-    GameObject UIController;
-    [SerializeField]
-    GameObject panel;
+    [SerializeField] int HP = 100;
+    [SerializeField] LayerMask enemyMask;
+    [SerializeField] float spd = 10f;
+    [SerializeField] Transform atkPoint;
     void Start()
     {
         UIController = GameObject.Find("Canvas");
@@ -43,16 +38,16 @@ public class PlayerController : MonoBehaviour
         //поправить прыжок
         if (Input.GetButtonDown("Jump") & canJump)
         {
-            rb2d.AddRelativeForce(Vector2.up * 8, ForceMode2D.Impulse);
+            rb2d.AddRelativeForce(Vector2.up * 13, ForceMode2D.Impulse);
             anim.SetBool("isJump", true);
             canJump = false;
         }
-        if (rb2d.velocity.x > 0 & !isRight)
+        if (rb2d.velocity.x > 0.01 & !isRight)
         {
             transform.Rotate(new Vector3(0, 180, 0));
             isRight = true;
         }
-        if (rb2d.velocity.x < 0 & isRight)
+        if (rb2d.velocity.x < -0.01 & isRight)
         {
             transform.Rotate(new Vector3(0, 180, 0));
             isRight = false;
@@ -60,9 +55,8 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("mov", rb2d.velocity.sqrMagnitude);
 
 
-        if (Input.GetButtonDown("Fire1") && canJump==true)
+        if (Input.GetButtonDown("Fire1") && canJump == true)
         {
-
             canMove = false;
             canJump = false;
             move = 0;
@@ -73,12 +67,13 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Ground") || other.CompareTag("Chicken") || other.CompareTag("BoD"))
         {
+
             canJump = true;
             anim.SetBool("isJump", false);
         }
-        if(other.name=="DEATH")
+        if (other.name == "DEATH")
         {
-            TakeDmg(100500,transform.position.x);
+            TakeDmg(100500, transform.position.x);
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -100,11 +95,10 @@ public class PlayerController : MonoBehaviour
             dir = 1;
         }
         HP -= _dmg;
-        if (HP<=0)
+        if(HP<= 0)
         {
             Time.timeScale = 0;
             panel.SetActive(true);
-            
         }
         rb2d.AddRelativeForce(new Vector2(0, 1f), ForceMode2D.Impulse);
         move = dir;
@@ -126,6 +120,7 @@ public class PlayerController : MonoBehaviour
     public void Kill()
     {
         Collider2D enemy = Physics2D.OverlapCircle(new Vector2(atkPoint.position.x, atkPoint.position.y), 0.3f, enemyMask);
+        Debug.Log(enemy.tag);
         if (enemy != null)
         {
             if (enemy.CompareTag("Chicken"))
@@ -138,7 +133,7 @@ public class PlayerController : MonoBehaviour
             }
             if (enemy.CompareTag("Items"))
             {
-                enemy.GetComponent<vaseController>().DestroyVase();
+                enemy.GetComponent<vaseController>().destroyVase();
             }
         }
     }

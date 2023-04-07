@@ -41,7 +41,6 @@ public class ChickenController : MonoBehaviour
                 player.GetComponent<PlayerController>().TakeDmg(1, transform.position.x);
             }
         }
-
     }
     private void OnDrawGizmos()
     {
@@ -56,9 +55,9 @@ public class ChickenController : MonoBehaviour
     }
     public void Death()
     {
-        alive= false;
+        alive = false;
         rb2d.velocity = Vector2.zero;
-        anim.SetBool("isDead", true);
+        anim.SetBool("isDeath", true);
         Destroy(gameObject, 0.5f);
     }
 }

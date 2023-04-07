@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: vase
+  m_Name: Vase
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -21,17 +21,17 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 806132364, guid: 0d69038efa95adb41a367f8085eafa5b, type: 3}
-    - time: 0.16666667
+    - time: 0.07692308
       value: {fileID: 200615921, guid: 0d69038efa95adb41a367f8085eafa5b, type: 3}
-    - time: 0.33333334
+    - time: 0.15384616
       value: {fileID: -1557033152, guid: 0d69038efa95adb41a367f8085eafa5b, type: 3}
-    - time: 0.5
+    - time: 0.23076923
       value: {fileID: -602528941, guid: 0d69038efa95adb41a367f8085eafa5b, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 6
+  m_SampleRate: 13
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -55,7 +55,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.6666667
+    m_StopTime: 0.30769232
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -75,7 +75,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.5
+  - time: 0.23076923
     functionName: DestroyObject
     data: 
     objectReferenceParameter: {fileID: 0}

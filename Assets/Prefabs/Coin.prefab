@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7796535141956791444}
   - component: {fileID: 1349657456891566773}
   - component: {fileID: 2083368918352943227}
-  - component: {fileID: 4130863889147937307}
-  - component: {fileID: 987691292586070505}
-  m_Layer: 9
+  - component: {fileID: 4319718611607443847}
+  - component: {fileID: 7227860598198068144}
+  m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe454eacf3645e408e9c52dea177b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!58 &4130863889147937307
+  uicontroller: {fileID: 0}
+--- !u!58 &4319718611607443847
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,7 +154,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.19
---- !u!50 &987691292586070505
+--- !u!50 &7227860598198068144
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -161,7 +162,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3459637667576091220}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -173,4 +174,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
